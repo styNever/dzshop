@@ -1,0 +1,44 @@
+.wrap {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.login-panel {
+    width: 360px;
+    height: 220px;
+    margin-top: 25%;
+    margin-left: 35%;
+    text-align: center;
+    background-color: cyan;
+    opacity: 0.78;
+}
+
+.login-panel table {
+    font-weight: 800;
+    opacity: 1;
+    margin: 0 auto;
+}
+
+.login-title h1 {
+    width: 150px;
+    margin: 10px auto;
+    opacity: 0.88;
+    background: olivedrab;
+}
+
+.login-input {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.login-input input {
+    width: 180px;
+    height: 18px;
+}
+
+.login-bt input {
+    font-size: 15px;
+    width: 42px;
+    height: 26px;
+    margin: 10px;
+}
