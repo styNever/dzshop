@@ -6,7 +6,7 @@
     <title>牛逼后台管理系统</title>
     <link rel="stylesheet" href="/public/admin/css/main.css" />
     <link rel="stylesheet" href="/public/admin/css/common.css" />
-    <link rel="stylesheet" href="/public/admin/css/index.css" />
+    <link rel="stylesheet" href="/public/admin/css/manager.css" />
     <script src="/public/plugins/jquery/jquery.js"></script>
 </head>
 
@@ -51,18 +51,31 @@
             </div>
         </div>
         <div class="right ">
-            <div class="panel ">
-                <div class="site-info">
-                    <dl>
-                        <dt>网站信息</dt>
-                        <dd>牛逼电商后台管理系统</dd>
-                        <dd>牛逼电商后台管理系统</dd>
-                        <dd>牛逼电商后台管理系统</dd>
-                        <dd>牛逼电商后台管理系统</dd>
-                        <dd>牛逼电商后台管理系统</dd>
-                        <dd>牛逼电商后台管理系统</dd>
-                        <dd>牛逼电商后台管理系统</dd>
-                    </dl>
+            <div class="panel">
+                <div class="manager">
+                    <h1>管理员列表</h1>
+                    <table class="manager-data-list">
+                        <tr>
+                            <th>全选/反选</th>
+                            <th>管理员id</th>
+                            <th>管理员名称</th>
+                            <th>管理员最近登录时间</th>
+                            <th>管理员最近登录ip</th>
+                            <th>管理员所属角色</th>
+                            <th>操作</th>
+                        </tr>
+                        <foreach name='info' item='mkey'>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>{$mkey.m_id}</td>
+                                <td>{$mkey.m_name}</td>
+                                <td>{$mkey.m_lasttime}</td>
+                                <td>{$mkey.m_lastip}</td>
+                                <td>{$mkey.role_id}</td>
+                                <td><a href="">修改</a>/<a href="">删除</a></td>
+                            </tr>
+                        </foreach>
+                    </table>
                 </div>
             </div>
         </div>
