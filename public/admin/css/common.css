@@ -98,3 +98,7 @@
 .panel {
     padding-top: 50px;
 }
+
+.panel h1 {
+    margin-left: 33%;
+}

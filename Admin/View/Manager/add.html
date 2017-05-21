@@ -6,7 +6,7 @@
     <title>牛逼后台管理系统</title>
     <link rel="stylesheet" href="/public/admin/css/main.css" />
     <link rel="stylesheet" href="/public/admin/css/common.css" />
-    <link rel="stylesheet" href="/public/admin/css/index.css" />
+    <link rel="stylesheet" href="/public/admin/css/panel.css" />
     <script src="/public/plugins/jquery/jquery.js"></script>
 </head>
 
@@ -47,15 +47,38 @@
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/manager/add">》》添加管理员</a></li>
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/auth/showlist">》》权限列表</a></li>
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/auth/add">》》添加权限</a></li>
+                    <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/role/add">》》添加角色</a></li>
                 </ul>
             </div>
         </div>
         <div class="right ">
             <div class="panel ">
-                <div class="site-info">
-                    <dl>
-                        <dd>添加管理员</dd>
-                    </dl>
+                <div class="manager">
+                    <h1>添加管理员</h1>
+                    <form action="" method="post">
+                        <dl class='manager-add'>
+                            <dd>
+                                <label for="name">管理员名称:</label>
+                                <input id='name' type="text" name='m_name' autofocus />
+                            </dd>
+                            <dd>
+                                <label for="passwd">管理员密码:</label>
+                                <input id='passwd' type="password" name='m_passwd' />
+                            </dd>
+                            <dd>
+                                <label for="">所属角色:</label>
+                                <select name="role_id">
+                                    <option value="0">角色1</option>
+                                    <option value="1">角色2</option>
+                                    <option value="2">角色3</option>
+                                </select>
+                            </dd>
+                            <dd class="manager-add-bt">
+                                <input type="submit" value="添加" />
+                                <input type="reset" value="重置" />
+                            </dd>
+                        </dl>
+                    </form>
                 </div>
             </div>
         </div>

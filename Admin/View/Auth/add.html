@@ -6,7 +6,7 @@
     <title>牛逼后台管理系统</title>
     <link rel="stylesheet" href="/public/admin/css/main.css" />
     <link rel="stylesheet" href="/public/admin/css/common.css" />
-    <link rel="stylesheet" href="/public/admin/css/index.css" />
+    <link rel="stylesheet" href="/public/admin/css/panel.css" />
     <script src="/public/plugins/jquery/jquery.js"></script>
 </head>
 
@@ -47,15 +47,40 @@
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/manager/add">》》添加管理员</a></li>
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/auth/showlist">》》权限列表</a></li>
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/auth/add">》》添加权限</a></li>
+                    <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/role/add">》》添加角色</a></li>
                 </ul>
             </div>
         </div>
         <div class="right ">
             <div class="panel ">
-                <div class="site-info">
-                    <dl>
-                        <dd>添加权限</dd>
-                    </dl>
+                <div class="manager">
+                    <h1>添加权限</h1>
+                    <form action="" method="post">
+                        <dl class='manager-add'>
+                            <dd>
+                                <label for="name">权限名称:</label>
+                                <input id='name' type="text" name='auth_name' autofocus />
+                            </dd>
+                            <dd>
+                                <label for="contro">权限名称:</label>
+                                <input id='contro' type="text" name='auth_c' />
+                            </dd>
+                            <dd>
+                                <label for="fn">权限名称:</label>
+                                <input id='fn' type="text" name='auth_a' />
+                            </dd>
+                            <dd><label>权限上级:</label>
+                                <select name="auth_pid">
+                                    <option value="0">无</option>
+                                    <option value="1">系统管理</option>
+                                </select>
+                            </dd>
+                            <dd class="manager-add-bt">
+                                <input type="submit" value="添加" />
+                                <input type="reset" value="重置" />
+                            </dd>
+                        </dl>
+                    </form>
                 </div>
             </div>
         </div>

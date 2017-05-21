@@ -6,7 +6,7 @@
     <title>牛逼后台管理系统</title>
     <link rel="stylesheet" href="/public/admin/css/main.css" />
     <link rel="stylesheet" href="/public/admin/css/common.css" />
-    <link rel="stylesheet" href="/public/admin/css/index.css" />
+    <link rel="stylesheet" href="/public/admin/css/panel.css" />
     <script src="/public/plugins/jquery/jquery.js"></script>
 </head>
 
@@ -47,15 +47,40 @@
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/manager/add">》》添加管理员</a></li>
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/auth/showlist">》》权限列表</a></li>
                     <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/auth/add">》》添加权限</a></li>
+                    <li><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/role/add">》》添加角色</a></li>
                 </ul>
             </div>
         </div>
         <div class="right ">
-            <div class="panel ">
-                <div class="site-info">
-                    <dl>
-                        <dd>权限列表</dd>
-                    </dl>
+            <div class="panel">
+                <div class="auth">
+                    <h1>权限列表</h1>
+                    <table class="auth-data-list">
+                        <tr>
+                            <th>全选/反选</th>
+                            <th>权限id</th>
+                            <th>权限名称</th>
+                            <th>权限所属上级</th>
+                            <th>权限控制器</th>
+                            <th>权限所属方法</th>
+                            <th>权限全路径</th>
+                            <th>权限等级</th>
+                            <th>操作</th>
+                        </tr>
+                        <foreach name='info' item='auth'>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>{$auth.auth_id}</td>
+                                <td>{$auth.auth_name}</td>
+                                <td>{$auth.auth_pid}</td>
+                                <td>{$auth.auth_c}</td>
+                                <td>{$auth.auth_a}</td>
+                                <td>{$auth.auth_path}</td>
+                                <td>{$auth.auth_level}</td>
+                                <td><a href="">修改</a>/<a href="">删除</a></td>
+                            </tr>
+                        </foreach>
+                    </table>
                 </div>
             </div>
         </div>

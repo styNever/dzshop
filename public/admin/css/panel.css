@@ -1,0 +1,74 @@
+/*管理员*/
+
+.manager {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*管理员列表*/
+
+.manager-data-list {
+    margin: 0 150;
+    margin-top: 20px;
+}
+
+.manager-data-list th {
+    width: 200px;
+}
+
+.manager-data-list td {
+    padding: 5px 0px;
+    text-align: center;
+}
+
+
+/*添加管理员*/
+
+.manager-add {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.manager-add dd {
+    margin-top: 30px;
+}
+
+.manager-add dd label {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+
+.manager-add dd input {
+    width: 320px;
+    height: 20px;
+}
+
+.manager-add dd select {
+    width: 326px;
+}
+
+.manager-add .manager-add-bt input {
+    margin-left: 100px;
+    margin-top: 10px;
+    width: 62px;
+    height: 32px;
+}
+
+
+/*权限*/
+
+.auth-data-list {
+    margin: 0 150;
+    margin-top: 20px;
+}
+
+.auth-data-list th {
+    width: 150px;
+}
+
+.auth-data-list td {
+    padding: 5px 0px;
+    text-align: center;
+}
