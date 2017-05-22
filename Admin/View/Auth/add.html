@@ -61,19 +61,21 @@
                                 <label for="name">权限名称:</label>
                                 <input id='name' type="text" name='auth_name' autofocus />
                             </dd>
+                            <dd><label>上级权限:</label>
+                                <select name="auth_pid">                                    
+                                    <option value="0">无</option>
+                                    <foreach name="auth_info" item="auth_one">
+                                        <option value="{$auth_one.auth_id}">{$auth_one.auth_name}</option>                                        
+                                    </foreach>
+                                </select>
+                            </dd>
                             <dd>
-                                <label for="contro">权限名称:</label>
+                                <label for="contro">权限控制器:</label>
                                 <input id='contro' type="text" name='auth_c' />
                             </dd>
                             <dd>
-                                <label for="fn">权限名称:</label>
+                                <label for="fn">权限方法:</label>
                                 <input id='fn' type="text" name='auth_a' />
-                            </dd>
-                            <dd><label>权限上级:</label>
-                                <select name="auth_pid">
-                                    <option value="0">无</option>
-                                    <option value="1">系统管理</option>
-                                </select>
                             </dd>
                             <dd class="manager-add-bt">
                                 <input type="submit" value="添加" />
