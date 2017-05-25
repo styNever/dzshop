@@ -54,27 +54,33 @@
         </div>
         <div class="right ">
             <div class="panel ">
-                <div class="manager">
-                    <h1>添加管理员</h1>
+                <div class="role">
+                    <h1>添加角色</h1>
                     <form action="" method="post">
-                        <dl class='manager-add'>
+                        <dl class='role-add'>
                             <dd>
-                                <label for="name">管理员名称:</label>
-                                <input id='name' type="text" name='m_name' autofocus />
+                                <label for="role_nameid">角色名称:</label>
+                                <input id='role_nameid' type="text" name='role_name' autofocus />
                             </dd>
                             <dd>
-                                <label for="passwd">管理员密码:</label>
-                                <input id='passwd' type="password" name='m_passwd' />
+                                <label>拥有的权限</label>
                             </dd>
-                            <dd>
-                                <label for="">所属角色:</label>
-                                <select name="role_id">
-                                    <foreach name="role_infos" item="info">
-                                        <option value="{$info.role_id}">{$info.role_name}</option>                                        
-                                    </foreach>
-                                </select>
+                            <dd class="select-auth">
+                                <foreach name="auth_infos" item="info" key='k'>
+                                    <if condition="$info['auth_level'] eq 0">
+                                        <if condition="$k neq 0">
+                                            </ul>
+                                        </if>
+                                        <ul>
+                                            <li>
+                                                <h4>{$info['auth_name']}</h4>
+                                            </li>
+                                            <else />
+                                            <li><input name="role_auth_ids[]" type="checkbox" value="{$info.auth_id}">{$info.auth_name}</li>
+                                    </if>
+                                </foreach>
                             </dd>
-                            <dd class="manager-add-bt">
+                            <dd class="role-add-bt">
                                 <input type="submit" value="添加" />
                                 <input type="reset" value="重置" />
                             </dd>

@@ -53,33 +53,29 @@
             </div>
         </div>
         <div class="right ">
-            <div class="panel ">
-                <div class="manager">
-                    <h1>添加管理员</h1>
-                    <form action="" method="post">
-                        <dl class='manager-add'>
-                            <dd>
-                                <label for="name">管理员名称:</label>
-                                <input id='name' type="text" name='m_name' autofocus />
-                            </dd>
-                            <dd>
-                                <label for="passwd">管理员密码:</label>
-                                <input id='passwd' type="password" name='m_passwd' />
-                            </dd>
-                            <dd>
-                                <label for="">所属角色:</label>
-                                <select name="role_id">
-                                    <foreach name="role_infos" item="info">
-                                        <option value="{$info.role_id}">{$info.role_name}</option>                                        
-                                    </foreach>
-                                </select>
-                            </dd>
-                            <dd class="manager-add-bt">
-                                <input type="submit" value="添加" />
-                                <input type="reset" value="重置" />
-                            </dd>
-                        </dl>
-                    </form>
+            <div class="panel">
+                <div class="role">
+                    <h1>角色列表</h1>
+                    <table class="role-data-list">
+                        <tr>
+                            <th>全选/反选</th>
+                            <th>角色id</th>
+                            <th>角色名称</th>
+                            <th>角色拥有的权限id</th>
+                            <th>拥有的权限控制器和方法</th>
+                            <th>操作</th>
+                        </tr>
+                        <foreach name='role_infos' item='rkey'>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>{$rkey.role_id}</td>
+                                <td>{$rkey.role_name}</td>
+                                <td>{$rkey.role_auth_ids}</td>
+                                <td>{$rkey.role_auth_ca}</td>
+                                <td><a href="">修改</a>/<a href="">删除</a></td>
+                            </tr>
+                        </foreach>
+                    </table>
                 </div>
             </div>
         </div>

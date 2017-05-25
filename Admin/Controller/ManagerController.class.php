@@ -15,7 +15,8 @@ class ManagerController extends AdminController{
                 $this->error('添加失败，将返回继续添加',U('Admin/Manager/add'));
             }
         }else{
-            
+            $role_infos=M('role')->select();
+            $this->assign('role_infos',$role_infos);
             $this->display();
         }
 
