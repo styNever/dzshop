@@ -73,10 +73,10 @@
                                         </if>
                                         <ul>
                                             <li>
-                                                <h4>{$info['auth_name']}</h4>
+                                                <h4><input type="checkbox" hidden>{$info['auth_name']}</h4>
                                             </li>
                                             <else />
-                                            <li><input name="role_auth_ids[]" type="checkbox" value="{$info.auth_id}">{$info.auth_name}</li>
+                                            <li><input name="role_auth_ids[]" type="checkbox" value="{$info.auth_path}">{$info.auth_name}</li>
                                     </if>
                                 </foreach>
                             </dd>
