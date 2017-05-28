@@ -1,0 +1,21 @@
+<include file="./Admin/View/frame-top.html " />
+<div class="panel-list">
+    <h1>商品类别列表</h1>
+    <table class="panel-data-list">
+        <tr>
+            <th>全选/反选</th>
+            <th>商品类别id</th>
+            <th>商品类别名称</th>
+            <th>操作</th>
+        </tr>
+        <foreach name='categorys' item='category'>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>{$category.category_id}</td>
+                <td>{$category.category_name}</td>
+                <td><a href="">修改</a>/<a href="">删除</a></td>
+            </tr>
+        </foreach>
+    </table>
+</div>
+<include file="./Admin/View/frame-footer.html " />

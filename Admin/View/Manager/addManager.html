@@ -1,8 +1,10 @@
 <include file="./Admin/View/frame-top.html " />
-<div class="manager">
-    <h1>添加管理员</h1>
+<div class="panel-add">
     <form action="" method="post">
-        <dl class='manager-add'>
+        <dl>
+            <dd>
+                <h1>添加管理员</h1>
+            </dd>
             <dd>
                 <label for="name">管理员名称:</label>
                 <input id='name' type="text" name='m_name' autofocus />
@@ -19,7 +21,7 @@
                                     </foreach>
                                 </select>
             </dd>
-            <dd class="manager-add-bt">
+            <dd class="panel-add-bt">
                 <input type="submit" value="添加" />
                 <input type="reset" value="重置" />
             </dd>

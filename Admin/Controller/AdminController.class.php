@@ -15,7 +15,7 @@ class AdminController extends Controller{
         
     }
     private function getAuth(){
-                $auth=M('auth')->where('auth_level<2')->order('auth_path asc')->select();
+        $auth=M('auth')->where('auth_level<2')->order('auth_id asc,auth_path asc')->select();
         foreach($auth as $key){
             if($key['auth_level']!=0){                 
                 $items[$key['auth_pid']][]=$key;                

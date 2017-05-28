@@ -1,8 +1,10 @@
 <include file="./Admin/View/frame-top.html " />
-<div class="auth">
-    <h1>添加权限</h1>
+<div class="panel-add">
     <form action="" method="post">
-        <dl class='auth-add'>
+        <dl>
+            <dd>
+                <h1>添加权限</h1>
+            </dd>
             <dd>
                 <label for="name">权限名称:</label>
                 <input id='name' type="text" name='auth_name' autofocus />
@@ -23,7 +25,7 @@
                 <label for="fn">权限方法:</label>
                 <input id='fn' type="text" name='auth_a' />
             </dd>
-            <dd class="auth-add-bt">
+            <dd class="panel-add-bt">
                 <input type="submit" value="添加" />
                 <input type="reset" value="重置" />
             </dd>

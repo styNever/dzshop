@@ -1,0 +1,212 @@
+/*管理员*/
+
+
+/*暂时作为样式备份*/
+
+
+/*管理员列表*/
+
+.manager-data-list {
+    margin: 0 150;
+    margin-top: 20px;
+}
+
+.manager-data-list th {
+    width: 180px;
+}
+
+.manager-data-list td {
+    padding: 5px 0px;
+    text-align: center;
+}
+
+
+/*添加管理员*/
+
+.manager-add {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.manager-add dd {
+    margin-top: 30px;
+}
+
+.manager-add dd label {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+
+.manager-add dd input {
+    width: 320px;
+    height: 20px;
+}
+
+.manager-add dd select {
+    width: 326px;
+}
+
+.manager-add .manager-add-bt input {
+    margin-left: 100px;
+    margin-top: 10px;
+    width: 62px;
+    height: 32px;
+}
+
+
+/*权限*/
+
+
+/*权限列表*/
+
+.auth-data-list {
+    margin: 0 150;
+    margin-top: 20px;
+}
+
+.auth-data-list th {
+    width: 130px;
+}
+
+.auth-data-list td {
+    padding: 5px 0px;
+    text-align: center;
+}
+
+
+/*添加权限*/
+
+.auth-add {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.auth-add dd {
+    margin-top: 30px;
+}
+
+.auth-add dd label {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+
+.auth-add dd input {
+    width: 320px;
+    height: 20px;
+}
+
+.auth-add dd select {
+    width: 326px;
+}
+
+.auth-add .auth-add-bt input {
+    margin-left: 100px;
+    margin-top: 10px;
+    width: 62px;
+    height: 32px;
+}
+
+
+/*角色*/
+
+
+/*角色列表*/
+
+.role-data-list {
+    margin: 0 150;
+    margin-top: 20px;
+}
+
+.role-data-list th {
+    width: 180px;
+}
+
+.role-data-list td {
+    padding: 5px 0px;
+    width: 180px;
+    text-align: center;
+}
+
+
+/*添加角色*/
+
+.role-add {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.role-add dd {
+    margin-top: 30px;
+}
+
+.role-add dd label {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+
+#role_nameid {
+    width: 280px;
+}
+
+.select-auth {
+    margin-left: 50px;
+}
+
+.select-auth input {
+    /*选择框*/
+    width: 36px;
+    margin-left: 15px;
+}
+
+.role-add .role-add-bt input {
+    /*提交按钮*/
+    margin-left: 100px;
+    margin-top: 10px;
+    width: 62px;
+    height: 32px;
+}
+
+.select-auth ul {
+    margin-top: 18px;
+}
+
+
+/*添加商品*/
+
+.goods-add {
+    margin-top: 20px;
+    margin-left: 50px;
+    text-align: center;
+}
+
+.goods-add dd {
+    margin-top: 30px;
+}
+
+.goods-add dd label {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+
+.goods-add input {
+    width: 80%;
+}
+
+.goods-add select {
+    width: 80%;
+}
+
+.goods-add-bt {}
+
+.goods-add-bt input {
+    width: 62px;
+    height: 32px;
+}
+
+.goods-add textarea {
+    width: 80%;
+}

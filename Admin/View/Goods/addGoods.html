@@ -1,0 +1,45 @@
+<include file="./Admin/View/frame-top.html " />
+<div class="panel-add">
+    <form action="" method="post">
+        <dl>
+            <dd>
+                <h1>添加商品</h1>
+            </dd>
+            <dd>
+                <label for="name">商品名称:</label>
+                <input id='name' type="text" name='goods_name' autofocus />
+            </dd>
+            <dd>
+                <label for="price">商品价格:</label>
+                <input id='price' type="text" name='goods_price' />
+            </dd>
+            <dd>
+                <label for="num">商品数量:</label>
+                <input id='num' type="text" name='goods_num' placeholder="100" />
+            </dd>
+            <dd>
+                <label for="weight">商品重量:</label>
+                <input id='weight' type="text" name='goods_weight' placeholder="1.0kg" />
+            </dd>
+            <dd><label>所属分类:</label>
+                <select name="category_id">                                    
+                    <foreach name="categorys" item="category">
+                        <option value="{$category_id}">{$category.category_name}</option>                                        
+                    </foreach>
+                </select>
+            </dd>
+            <dd>
+                <label for="shop-img">商品图片:</label>
+                <input id='shop-img' type="file" name='goods_img' />
+            </dd>
+            <dd>
+                <textarea name="goods_desc" id="desc" cols="30" rows="10" placeholder="商品描述"></textarea>
+            </dd>
+            <dd class="panel-add-bt">
+                <input type="submit" value="添加" />
+                <input type="reset" value="重置" />
+            </dd>
+        </dl>
+    </form>
+</div>
+<include file="./Admin/View/frame-footer.html " />
