@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>牛逼后台管理系统</title>
+    <link rel="stylesheet" href="/public/admin/css/main.css" />
+    <link rel="stylesheet" href="/public/admin/css/common.css" />
+    <link rel="stylesheet" href="/public/admin/css/panel.css" />
+    <script src="/public/plugins/jquery/jquery.js"></script>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <!--头部-->
+        <div class="top clearfix">
+            <div class="top-logo fl"><img src="/public/admin/img/logo.jpg" alt="logo"></div>
+            <div class="user-info">
+                <ul>
+                    <li class="show-title">
+                        <h1>牛逼电商后台系统</h1>
+                    </li>
+                    <li class="show-user">
+                        <p>欢迎管理员<span>{$Think.session.manager.m_name}</span>登陆</p>
+                    </li>
+                    <li class="sign-out">
+                        <a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/index/loginout">退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--左边菜单栏显示部分-->
+        <div class="left ">
+            <!--主菜单-->
+            <div class="menu">
+                <ul>
+                    <foreach name="menus" item="menu">
+                        <li>{$menu.auth_name}</li>
+                    </foreach>
+                </ul>
+            </div>
+            <!--次级菜单-->
+            <foreach name="items" item="menu_items">
+                <div class=" menu-item hidden ">
+                    <ul>
+                        <foreach name="menu_items" item="menu_item">
+                            <li>
+                                <a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/{$menu_item.auth_c}/{$menu_item.auth_a} ">》》 {$menu_item.auth_name}
+                                </a>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </foreach>
+            <!--次级菜单结束-->
+        </div>
+        <!--右边内容主体部分-->
+        <div class="right ">
+            <div class="content ">
+                <div class="panel ">
+                    <!--内容面板显示部分-->

@@ -1,3 +1,5 @@
+/*登陆页面样式*/
+
 .wrap {
     width: 100%;
     margin: 0 auto;
@@ -5,7 +7,7 @@
 
 .login-panel {
     width: 360px;
-    height: 220px;
+    height: 280px;
     margin-top: 25%;
     margin-left: 35%;
     text-align: center;
@@ -31,14 +33,41 @@
     margin-top: 15px;
 }
 
+.login-input label {
+    display: inline-block;
+    width: 80px;
+}
+
+
+/*输入框*/
+
 .login-input input {
     width: 180px;
     height: 18px;
 }
+
+
+/*登陆按钮*/
 
 .login-bt input {
     font-size: 15px;
     width: 42px;
     height: 26px;
     margin: 10px;
+}
+
+
+/*验证输入框*/
+
+#vCode {
+    width: 180px;
+}
+
+
+/*验证码图片*/
+
+.vCode-img {
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
 }

@@ -1,3 +1,5 @@
+/*网站样式规范*/
+
 * {
     margin: 0px;
     padding: 0px;
@@ -52,3 +54,6 @@ a {
     width: 1024px;
     margin: 0 auto;
 }
+
+
+/*网站样式规范结束*/
