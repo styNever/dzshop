@@ -4,25 +4,27 @@
     <table class="panel-data-list">
         <tr>
             <th>全选/反选</th>
-            <th>权限id</th>
-            <th>权限名称</th>
-            <th>权限上级</th>
-            <th>权限控制器</th>
-            <th>权限所属方法</th>
-            <th>权限全路径</th>
-            <th>权限等级</th>
+            <th>商品id</th>
+            <th>商品名称</th>
+            <th>商品分类</th>
+            <th>商品价格</th>
+            <th>商品数量</th>
+            <th>商品重量</th>
+            <th>商品图片</th>
+            <th>商品描述</th>
             <th>操作</th>
         </tr>
-        <foreach name='info' item='auth'>
+        <foreach name='goodsInfos' item='goodsInfo'>
             <tr>
                 <td><input type="checkbox"></td>
-                <td>{$auth.auth_id}</td>
-                <td>{$auth.auth_name}</td>
-                <td>{$auth.auth_pid}</td>
-                <td>{$auth.auth_c}</td>
-                <td>{$auth.auth_a}</td>
-                <td>{$auth.auth_path}</td>
-                <td>{$auth.auth_level}</td>
+                <td>{$goodsInfo.goods_id}</td>
+                <td>{$goodsInfo.goods_name}</td>
+                <td>{$goodsInfo.category_id}</td>
+                <td>{$goodsInfo.goods_price}</td>
+                <td>{$goodsInfo.goods_num}</td>
+                <td>{$goodsInfo.goods_weight}</td>
+                <td><img src="{$goodsInfo.goods_small_img}" alt="商品图片" width="80" height="50"></td>
+                <td>{$goodsInfo.goods_desc}</td>
                 <td><a href="">修改</a>/<a href="">删除</a></td>
             </tr>
         </foreach>

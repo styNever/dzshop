@@ -9,21 +9,32 @@ class AdminController extends Controller{
             $this->redirect('admin/index/login');
             return ;
         }
-        $this->getAuth();
+        if(session('?manager')){
+            $this->getAuth();
+        }
     }
     function index(){
         
     }
     private function getAuth(){
-        $auth=M('auth')->where('auth_level<2')->order('auth_id asc,auth_path asc')->select();
-        foreach($auth as $key){
-            if($key['auth_level']!=0){                 
-                $items[$key['auth_pid']][]=$key;                
-              }else{
-                  $menus[]=$key;
-              }
-        }              
-        $this->assign('menus',$menus);
-        $this->assign('items',$items);
+        if(!session('?authContro')){//是否还要读库
+            $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');
+            $auth=M('auth')->where('auth_id in'." ($auth_ids) ")->order('auth_id asc,auth_path asc')->select();
+            foreach($auth as $key){//分离主菜单和次级菜单
+                if($key['auth_level']==1){ //次级菜单                
+                    $items[$key['auth_pid']][]=$key;                
+                }else if($key['auth_level']==0){
+                    $menus[]=$key;//主菜单
+                }
+            }             
+            $auths=array(
+                'menus'=>$menus,
+                'items'=>$items,
+            );
+            session('authContro',$auths);
+        }else{
+            $auths=session('authContro');
+        }
+        $this->assign($auths);
     }
 }

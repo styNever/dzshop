@@ -1,6 +1,6 @@
 <include file="./Admin/View/frame-top.html " />
 <div class="panel-add">
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <dl>
             <dd>
                 <h1>添加商品</h1>
@@ -24,13 +24,13 @@
             <dd><label>所属分类:</label>
                 <select name="category_id">                                    
                     <foreach name="categorys" item="category">
-                        <option value="{$category_id}">{$category.category_name}</option>                                        
+                        <option value="{$category.category_id}">{$category.category_name}</option>                                        
                     </foreach>
                 </select>
             </dd>
             <dd>
                 <label for="shop-img">商品图片:</label>
-                <input id='shop-img' type="file" name='goods_img' />
+                <input id='shop-img' type="file" name='goods_big_img' />
             </dd>
             <dd>
                 <textarea name="goods_desc" id="desc" cols="30" rows="10" placeholder="商品描述"></textarea>

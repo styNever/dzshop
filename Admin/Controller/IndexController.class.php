@@ -3,7 +3,6 @@ namespace Admin\Controller;
 use Admin\Controller;
 class IndexController extends AdminController {
     public function index(){
-
         $this->display();
     }
     public function login(){
