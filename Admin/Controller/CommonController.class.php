@@ -10,4 +10,9 @@ class CommonController extends Controller{
         $util=new \Common\Controller\UtilController();
         return $util->getVCode();
     }
+    //退出系统
+    public function loginOut(){
+        session(null);
+        $this->redirect('index/login');
+    }
 }

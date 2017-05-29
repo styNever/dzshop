@@ -24,10 +24,5 @@ class IndexController extends AdminController {
         }
     }
 
-    public function loginOut(){
-        session(null);
-        $this->redirect('index/login');
-    }
-
 
 }

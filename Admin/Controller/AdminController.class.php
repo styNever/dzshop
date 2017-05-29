@@ -10,7 +10,11 @@ class AdminController extends Controller{
             return ;
         }
         if(session('?manager')){
-            $this->getAuth();
+            if(!$this->checkContro()&&session('manager')['role_id']!=1){
+                $this->error('没有权限访问');
+                return;
+            }
+            $this->getAuth();//获取权限信息
         }
     }
     function index(){
@@ -18,8 +22,12 @@ class AdminController extends Controller{
     }
     private function getAuth(){
         if(!session('?authContro')){//是否还要读库
-            $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');
-            $auth=M('auth')->where('auth_id in'." ($auth_ids) ")->order('auth_id asc,auth_path asc')->select();
+            if(session('manager')['role_id']!=1){
+                $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');
+                $auth=M('auth')->where('auth_id in'." ($auth_ids) ")->order('auth_id asc,auth_path asc')->select();
+            }else{
+                $auth=M('auth')->order('auth_id asc,auth_path asc')->select();                
+            }
             foreach($auth as $key){//分离主菜单和次级菜单
                 if($key['auth_level']==1){ //次级菜单                
                     $items[$key['auth_pid']][]=$key;                
@@ -36,5 +44,14 @@ class AdminController extends Controller{
             $auths=session('authContro');
         }
         $this->assign($auths);
+    }
+
+    private function checkContro(){
+        if(!session('ControAction')){
+            $role_auth_ca=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ca');
+            $role_actions=explode(',',$role_auth_ca);
+            session('checkContro',$role_actions);
+        }
+        return in_array(CONTROLLER_NAME.'-'.ACTION_NAME,session('checkContro'));
     }
 }
