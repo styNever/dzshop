@@ -1,0 +1,35 @@
+<include file="./Admin/View/frame-top.html " />
+<div class="panel-add">
+    <form action="" method="post">
+        <dl>
+            <dd>
+                <h1>修改权限</h1>
+            </dd>
+            <dd>
+                <label for="name">权限名称:</label>
+                <input id='name' type="text" name='auth_name' value="{$currentAuth.auth_name}" autofocus />
+            </dd>
+            <dd><label>上级权限:</label>
+                <select name="auth_pid">                                    
+                    <option value="0">无</option>
+                    <foreach name="auth_info" item="auth_one">    
+                        <option value="{$auth_one.auth_id}">{$auth_one.auth_name}</option>                                        
+                    </foreach>
+                </select>
+            </dd>
+            <dd>
+                <label for="contro">权限控制器:</label>
+                <input id='contro' type="text" name='auth_c' value="{$currentAuth.auth_c}" />
+            </dd>
+            <dd>
+                <label for="fn">权限方法:</label>
+                <input id='fn' type="text" name='auth_a' value="{$currentAuth.auth_a}" />
+            </dd>
+            <dd class="panel-add-bt">
+                <input type="submit" value="更新" />
+                <input type="reset" value="重置" />
+            </dd>
+        </dl>
+    </form>
+</div>
+<include file="./Admin/View/frame-footer.html " />

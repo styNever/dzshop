@@ -23,7 +23,7 @@ class AuthController extends AdminController{
             if(D('auth')->addAuth($_POST)){
                 $this->success('添加成功，即将返回权限列表',U('Admin/Auth/showAuth'));
             }else{
-                $this->success('添加失败，即将返回继续添加',U('Admin/Auth/addAuth'));
+                $this->error('添加失败，即将返回继续添加');
             }
         }else{
             $auth_info=D('auth')->getAuthInfo();
@@ -31,4 +31,44 @@ class AuthController extends AdminController{
             $this->display();
         }
     }
+
+    public function delAuth($authId=null){
+        if(!$authId){
+            $this->error('非法访问');
+            return;
+        }
+        if(D('auth')->delAuth($authId)){
+             $this->success('删除成功');
+        }else{
+            $this->error('删除失败');
+        } 
+    }
+
+    /**
+    *@ function name updateAuth
+    *@ description 更新权限信息
+    */
+
+    public function updateAuth($authId=null){
+        if(!$authId){
+            $this->error('非法访问');
+            return;
+        }
+        if(!empty($_POST)){//有更新数据
+            if(D('auth')->updateAuth($_POST,$authId)){
+                $this->success('更新成功，即将返回权限列表',U('Admin/Auth/showAuth'));
+            }else{
+                $this->error('更新失败，即将返回继续更新');
+            }
+        }else{
+            $auth_info=D('auth')->getAuthInfo();
+            $currentAuth=M('auth')->find($authId);
+            $this->assign(array(
+                'auth_info'=>$auth_info,
+                'currentAuth'=>$currentAuth,
+            ));
+            $this->display();
+        }
+    }
+
 }

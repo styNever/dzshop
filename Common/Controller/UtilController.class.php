@@ -9,6 +9,7 @@ class UtilController extends Controller{
    public function MD5_Str($str){
         return sha1(md5(md5($str)+'hello'));
     }
+
     /*
     *生成验证码
     */
@@ -28,6 +29,9 @@ class UtilController extends Controller{
         return $vCode->entry();
     }    
 
+    /**
+    *文件上传*
+    */
     public function upload($config){
         if(!$config||!is_array($config)){
             $config=array(
@@ -48,6 +52,9 @@ class UtilController extends Controller{
         return $uploadInfo;
     }
 
+    /*
+    *生成缩略图*
+    */
     public function createThumb($img,$width,$heigth){    
         if(empty($img)){
             return;
@@ -62,6 +69,5 @@ class UtilController extends Controller{
             $heigth=$thumb->height()*0.25;
         }
         $thumb->thumb($width,$heigth)->save($img['savepath'].'thumb'.$img['savename']);
-    }
-    
+    }    
 }

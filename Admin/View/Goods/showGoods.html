@@ -25,7 +25,7 @@
                 <td>{$goodsInfo.goods_weight}</td>
                 <td><img src="{$goodsInfo.goods_small_img}" alt="商品图片" width="80" height="50"></td>
                 <td>{$goodsInfo.goods_desc}</td>
-                <td><a href="">修改</a>/<a href="">删除</a></td>
+                <td><a href="updateGoods?goodsId={$goodsInfo.goods_id}">修改</a>/<a href="delGoods?goodsId={$goodsInfo.goods_id}">删除</a></td>
             </tr>
         </foreach>
     </table>

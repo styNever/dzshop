@@ -23,7 +23,7 @@
                 <td>{$auth.auth_a}</td>
                 <td>{$auth.auth_path}</td>
                 <td>{$auth.auth_level}</td>
-                <td><a href="">修改</a>/<a href="">删除</a></td>
+                <td><a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/auth/updateAuth?authId={$auth.auth_id}">修改</a>/<a href="/{$Think.const.ROOT_PATH}{$Think.const.MODULE_NAME}/auth/delAuth?authId={$auth.auth_id}">删除</a></td>
             </tr>
         </foreach>
     </table>

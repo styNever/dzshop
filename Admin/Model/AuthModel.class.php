@@ -13,20 +13,24 @@ class AuthModel extends Model{
     */
     public function addAuth($pData){
         // 添加权限
-        $newid=$this->add($pData);        
-        if(!$pData['auth_pid']==0){//不是顶级权限
-            $pinfo=$this->find($pData['auth_pid']);//查找上级权限全路径
-            $auth_path=$pinfo['auth_path'].'-'.$newid;
-        }else{
-            $auth_path=$newid;
-        }   
-        $auth_level=count(explode('-',$auth_path))-1;
-        $insertData=array(
-            'auth_id'=>$newid,
-            'auth_path'=>$auth_path,
-            'auth_level'=>$auth_level
-        );
+        $auth_id=$this->add($pData);        
+        $insertData=$this->insertBefore($pData,$auth_id);
         return $this->save($insertData);
+    }
+
+    public function updateAuth($pData,$auth_id){
+        $insertData=$this->insertBefore($pData,$auth_id);
+        return $this->save($insertData);
+    }
+
+
+    public function delAuth($auth_id){
+        $childAuth=$this->where('auth_pid='.$auth_id)->select();
+        if($childAuth){
+            return false;
+        }else{
+            return $this->delete($auth_id);
+        }
     }
 
 /*
@@ -46,6 +50,23 @@ class AuthModel extends Model{
             $auth_info[$key]['auth_name']=str_repeat('-->>',$value['auth_level']).$value['auth_name'];
         }
         return $auth_info;
+    }
+
+    /*
+    *数据插入之前做处理
+    **/
+    private function insertBefore($pData,$auth_id){
+        if(!$pData['auth_pid']==0){//不是顶级权限
+            $pinfo=$this->find($pData['auth_pid']);//查找上级权限全路径
+            $auth_path=$pinfo['auth_path'].'-'.$auth_id;
+        }else{
+            $auth_path=$auth_id;
+        }   
+        $auth_level=count(explode('-',$auth_path))-1;
+        $pData['auth_id']=$auth_id;
+        $pData['auth_path']=$auth_path;
+        $pData['auth_level']=$auth_level;
+        return $pData;
     }
 
 }
