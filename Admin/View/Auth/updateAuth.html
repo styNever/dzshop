@@ -11,9 +11,13 @@
             </dd>
             <dd><label>上级权限:</label>
                 <select name="auth_pid">                                    
-                    <option value="0">无</option>
+                    <option value="0">无</option>                    
                     <foreach name="auth_info" item="auth_one">    
-                        <option value="{$auth_one.auth_id}">{$auth_one.auth_name}</option>                                        
+                        <if condition="$auth_one.auth_id eq $currentAuth['auth_pid']">
+                            <option value="{$auth_one.auth_id}" selected>{$auth_one.auth_name}</option>        
+                       <else />                  
+                            <option value="{$auth_one.auth_id}">{$auth_one.auth_name}</option>        
+                        </if>
                     </foreach>
                 </select>
             </dd>
