@@ -19,7 +19,7 @@
                 <td>{$mkey.m_lasttime}</td>
                 <td>{$mkey.m_lastip}</td>
                 <td>{$mkey.role_id}</td>
-                <td><a href="">修改</a>/<a href="">删除</a></td>
+                <td><a href="updateManager?managerId={$mkey.m_id}">修改</a>/<a href="delManager?managerId={$mkey.m_id}">删除</a></td>
             </tr>
         </foreach>
     </table>

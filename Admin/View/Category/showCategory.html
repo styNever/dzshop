@@ -13,7 +13,7 @@
                 <td><input type="checkbox"></td>
                 <td>{$category.category_id}</td>
                 <td>{$category.category_name}</td>
-                <td><a href="">修改</a>/<a href="">删除</a></td>
+                <td><a href="updateCategory?categoryId={$category.category_id}">修改</a>/<a href="delCategory?categoryId={$category.category_id}">删除</a></td>
             </tr>
         </foreach>
     </table>

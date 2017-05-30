@@ -1,0 +1,35 @@
+<include file="./Admin/View/frame-top.html " />
+<div class="panel-add">
+    <h1>修改角色信息</h1>
+    <form action="" method="post">
+        <dl class='role-add'>
+            <dd>
+                <label for="role_nameid">角色名称:</label>
+                <input id='role_nameid' type="text" name='role_name' value="{$roleInfo.role_name}" />
+            </dd>
+            <dd>
+                <label>拥有的权限</label>
+            </dd>
+            <dd class="select-auth">
+                <foreach name="auth_infos" item="info" key='k'>
+                    <if condition="$info['auth_level'] eq 0">
+                        <if condition="$k neq 0">
+                            </ul>
+                        </if>
+                        <ul>
+                            <li>
+                                <h4><input type="checkbox" hidden>{$info['auth_name']}</h4>
+                            </li>
+                            <else />
+                            <li><input name="role_auth_ids[]" type="checkbox" value="{$info.auth_path}">{$info.auth_name}</li>
+                    </if>
+                </foreach>
+            </dd>
+            <dd class="panel-add-bt">
+                <input type="submit" value="更新" />
+                <input type="reset" value="重置" />
+            </dd>
+        </dl>
+    </form>
+</div>
+<include file="./Admin/View/frame-footer.html " />

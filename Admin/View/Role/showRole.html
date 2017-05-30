@@ -17,7 +17,7 @@
                 <td>{$rkey.role_name}</td>
                 <td>{$rkey.role_auth_ids}</td>
                 <td>{$rkey.role_auth_ca}</td>
-                <td><a href="">修改</a>/<a href="">删除</a></td>
+                <td><a href="updateRole?roleId={$rkey.role_id}">修改</a>/<a href="delRole?roleId={$rkey.role_id}">删除</a></td>
             </tr>
         </foreach>
     </table>

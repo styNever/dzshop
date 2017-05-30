@@ -1,0 +1,19 @@
+<include file="./Admin/View/frame-top.html " />
+<div class="panel-add">
+    <form action="" method="post">
+        <dl>
+            <dd>
+                <h1>修改商品分类</h1>
+            </dd>
+            <dd>
+                <label for="name">商品分类:</label>
+                <input id='name' type="text" name='category_name' value="{$categoryInfo.category_name}" autofocus />
+            </dd>
+            <dd class="panel-add-bt">
+                <input type="submit" value="更新" />
+                <input type="reset" value="重置" />
+            </dd>
+        </dl>
+    </form>
+</div>
+<include file="./Admin/View/frame-footer.html " />
