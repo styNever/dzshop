@@ -12,11 +12,11 @@ class RoleController extends AdminController{
 
     private function dateProcess(){
         if($_POST['role_name']==''){
-            $this->error('添加角色失败，角色名称不能为空','add',1);
+            $this->error('添加角色失败，角色名称不能为空','',1);
             return ;
         }
         if($_POST['role_auth_ids']==''){
-            $this->error('添加角色失败，权限不能为空','add',1);
+            $this->error('添加角色失败，权限不能为空','',1);
             return ;
         }            
         $ids=implode(',',$_POST['role_auth_ids']);
