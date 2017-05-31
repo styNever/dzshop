@@ -78,7 +78,8 @@ class RoleController extends AdminController{
             }
         }else{
             $roleInfo=M('role')->find($roleId);
-            $auth_infos=M('auth')->select();            
+            $auth_infos=M('auth')->select(); 
+            $roleInfo['role_auth_ids']=explode(',',$roleInfo['role_auth_ids']);       
             $this->assign(array(
                 'roleInfo'=>$roleInfo,
                 'auth_infos'=>$auth_infos,

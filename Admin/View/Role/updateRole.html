@@ -21,12 +21,22 @@
                                 <h4><input type="checkbox" hidden>{$info['auth_name']}</h4>
                             </li>
                             <else />
-                            <li><input name="role_auth_ids[]" type="checkbox" value="{$info.auth_path}">{$info.auth_name}</li>
+                            <assign name="flag" value="false" />
+                            <foreach name="roleInfo['role_auth_ids']" item="ar_ids">
+                                <if condition="$ar_ids eq $info['auth_id']">
+                                    <assign name="flag" value="true" />
+                                </if>
+                            </foreach>
+                            <if condition="$flag eq 'true'">
+                                <li><input name="role_auth_ids[]" type="checkbox" value="{$info.auth_path}" checked="checked">{$info.auth_name}</li>
+                                <else />
+                                <li><input name="role_auth_ids[]" type="checkbox" value="{$info.auth_path}">{$info.auth_name}</li>
+                            </if>
                     </if>
                 </foreach>
             </dd>
             <dd class="panel-add-bt">
-                <input type="submit" value="更新" />
+                <input type="submit" value="修改" />
                 <input type="reset" value="重置" />
             </dd>
         </dl>
