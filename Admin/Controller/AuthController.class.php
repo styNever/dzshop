@@ -21,6 +21,7 @@ class AuthController extends AdminController{
         if(!empty($_POST)){
             // 有数据提交
             if(D('auth')->addAuth($_POST)){
+                session('authContro',null);
                 $this->success('添加成功，即将返回权限列表',U('Admin/Auth/showAuth'));
             }else{
                 $this->error('添加失败，即将返回继续添加');

@@ -1,15 +1,20 @@
 <?php
 namespace Admin\Controller;
-use Admin\Controller;
-class IndexController extends AdminController {
+use Think\Controller;
+class IndexController extends Controller {
     public function index(){
+        if(!session('?manager')){//当前没有登录跳转到登录页
+            $this->redirect('admin/index/login');
+            return ;
+        }
+        new AdminController();
         $this->display();
     }
     public function login(){
         if(!empty($_POST)){
             //有数据提交则做验证处理
             $verify=new \Think\Verify();
-            if(!$verify->check($_POST['vCode'])){
+            if($verify->check($_POST['vCode'])){
                 $this->error('验证码错误','Index/login');
                 return ;
             }

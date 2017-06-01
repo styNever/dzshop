@@ -3,9 +3,12 @@
 namespace Admin\Controller;
 use Think\Controller;
 class AdminController extends Controller{
+    /**
+    *检查权限，检查是否登陆*
+    */
     function __construct(){
         parent::__construct();
-        if(!session('?manager')&&ACTION_NAME!=login){//当前没有登录跳转到登录页
+        if(!session('?manager')){//当前没有登录跳转到登录页
             $this->redirect('admin/index/login');
             return ;
         }
@@ -18,15 +21,20 @@ class AdminController extends Controller{
         }
     }
     function index(){
-        
+        //控制器空处理
     }
+
+    /*
+    *得到当前用户的各级权限*
+    */
+
     private function getAuth(){
-        if(!session('?authContro')){//是否还要读库
+        if(!session('?authContro')){//是否还要处理，子菜单和父级菜单分离
             if(session('manager')['role_id']!=1){
-                $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');
+                $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');//权限集合
                 $auth=M('auth')->where('auth_id in'." ($auth_ids) ")->order('auth_id asc,auth_path asc')->select();
             }else{
-                $auth=M('auth')->order('auth_id asc,auth_path asc')->select();                
+                $auth=M('auth')->order('auth_id asc,auth_path asc')->select();//得到所有权限                
             }
             foreach($auth as $key){//分离主菜单和次级菜单
                 if($key['auth_level']==1){ //次级菜单                
@@ -40,18 +48,21 @@ class AdminController extends Controller{
                 'items'=>$items,
             );
             session('authContro',$auths);
-        }else{
-            $auths=session('authContro');
         }
-        $this->assign($auths);
+        $this->assign(session('authContro'));
     }
 
+    /*
+    *检测当前用户是否拥有权限，并且检测是否已经读库*
+    * return ture 拥有权限，false 没有权限*
+    */
     private function checkContro(){
-        if(!session('ControAction')){
+        if(!session('controAction')){
             $role_auth_ca=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ca');
+            $role_auth_ca=strtolower($role_auth_ca);
             $role_actions=explode(',',$role_auth_ca);
-            session('checkContro',$role_actions);
+            session('controAction',$role_actions);
         }
-        return in_array(CONTROLLER_NAME.'-'.ACTION_NAME,session('checkContro'));
+        return in_array(strtolower(CONTROLLER_NAME.'-'.ACTION_NAME),session('controAction'));
     }
 }
