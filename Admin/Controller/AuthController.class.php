@@ -7,6 +7,7 @@ class AuthController extends AdminController{
     *@function name showAuth
     *@description 展示全部权限信息
     */
+
     public function showAuth(){
         $auth_info=D('auth')->getAuthInfo(true);
         $this->assign('info',$auth_info);
@@ -39,7 +40,8 @@ class AuthController extends AdminController{
             return;
         }
         if(D('auth')->delAuth($authId)){
-             $this->success('删除成功');
+            session('authContro',null);            
+            $this->success('删除成功');
         }else{
             $this->error('删除失败');
         } 
@@ -57,6 +59,7 @@ class AuthController extends AdminController{
         }
         if(!empty($_POST)){//有更新数据
             if(D('auth')->updateAuth($_POST,$authId)){
+                session('authContro',null);                  
                 $this->success('更新成功，即将返回权限列表',U('Admin/Auth/showAuth'));
             }else{
                 $this->error('更新失败，即将返回继续更新');

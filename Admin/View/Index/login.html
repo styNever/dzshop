@@ -6,12 +6,13 @@
     <title>后台登陆</title>
     <link rel="stylesheet" href="/public/admin/css/main.css" />
     <link rel="stylesheet" href="/public/admin/css/login.css" />
+    <script src="/public/plugins/jquery/jquery.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="login-panel">
-            <form action="" method="post">
+            <form>
                 <table>
                     <tr class="login-title">
                         <td colspan="2">
@@ -20,29 +21,34 @@
                     </tr>
                     <tr class="login-input">
                         <td><label for="name">账号:</label><input id='name' type="text" name="m_name" autofocus></td>
+                        <td><label class="check-info"></label></td>
                     </tr>
                     <tr class="login-input">
                         <td><label for="pwd">密码:</label><input id='pwd' type="password" name="m_passwd"></td>
+                        <td><label class="check-info"></label></td>
                     </tr>
                     <tr class="login-input">
                         <td>
                             <label for="vCode">验证码:</label>
                             <input id='vCode' type="text" name="vCode">
                         </td>
+                        <td><label></label></td>
                     </tr>
                     <tr>
                         <td>
                             <img class="vCode-img" src="/index.php/admin/common/getVCode.html" alt="验证码" />
-                        </td>
+                            <label class="check-info"></label> </td>
+                        <td></td>
                     </tr>
                     <tr class="login-bt">
-                        <td><input type="submit" value="登陆" /><input type="reset" value="重置" /></td>
+                        <td><input type="button" value="登陆" id="submit-bt" /><input type="reset" value="重置" /></td>
                     </tr>
 
                 </table>
             </form>
         </div>
     </div>
+    <script src="/public/admin/js/login.js"></script>
 </body>
 
 </html>

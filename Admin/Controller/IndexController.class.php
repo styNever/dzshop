@@ -14,8 +14,12 @@ class IndexController extends Controller {
         if(!empty($_POST)){
             //有数据提交则做验证处理
             $verify=new \Think\Verify();
-            if($verify->check($_POST['vCode'])){
-                $this->error('验证码错误','Index/login');
+            if($verify->check($_POST['vCode'])){                
+                $this->ajaxReturn(array(
+                    'message'=>'验证码错误',
+                    'url'=>'Index/login',
+                ));
+                // $this->error('验证码错误','Index/login');
                 return ;
             }
             $_POST['m_passwd']=A('Common/Util')->MD5_Str($_POST['m_passwd']);
