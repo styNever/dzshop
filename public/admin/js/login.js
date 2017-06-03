@@ -1,19 +1,32 @@
 $(function() {
     $('#submit-bt').click(function() {
-        if (check()) {
-            $.ajax({
-                'type': 'post',
-                'url': '',
-                'data': 'm_name=adf&m_passwd=jiojji',
-                success: function(msg) {
-                    // alert(msg.message);
-                    alert(msg.info);
-                }
-            });
-
-        }
+        postData();
+    });
+    $('.vCode-img').click(function() {
+        reloadImg();
     });
 });
+
+
+function postData() {
+    if (check()) {
+        $.ajax({
+            'type': 'post',
+            'data': 'm_name=' + $('#name').val() + '&m_passwd=' + $('#pwd').val() + ',&vCode=' + $('#vCode').val(),
+            success: function(msg) {
+                if (!msg.errorCode) {
+                    $('.msg-error').html(msg.message);
+                    setTimeout(function() {
+                        location.href = msg.url;
+                    }, 500);
+                } else {
+                    reloadImg();
+                    $('.msg-error').html(msg.message);
+                }
+            }
+        });
+    }
+}
 
 function check() {
     var namePattern = /\W+/;
@@ -42,4 +55,9 @@ function check() {
         return;
     }
     return true;
+}
+
+function reloadImg() {
+    $('.vCode-img').attr('src', '/index.php/admin/common/getVCode.html?code=' +
+        new Date().getTime());
 }
