@@ -17,7 +17,7 @@ class AdminController extends Controller{
                 $this->error('没有权限访问');
                 return;
             }
-            $this->getAuth();//获取权限信息
+            $this->getAuth();//获取当前用户权限信息
         }
     }
     function index(){
@@ -32,9 +32,9 @@ class AdminController extends Controller{
         if(!session('?authContro')){//是否还要处理，子菜单和父级菜单分离
             if(session('manager')['role_id']!=1){
                 $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');//权限集合
-                $auth=M('auth')->where('auth_id in'." ($auth_ids) ")->order('auth_id asc,auth_path asc')->select();
+                $auth=M('auth')->where('auth_id in'." ($auth_ids) ")->order('auth_path asc')->select();
             }else{
-                $auth=M('auth')->order('auth_id asc,auth_path asc')->select();//得到所有权限                
+                $auth=M('auth')->order('auth_path asc')->select();//得到所有权限                
             }
             foreach($auth as $key){//分离主菜单和次级菜单
                 if($key['auth_level']==1){ //次级菜单                
@@ -57,10 +57,11 @@ class AdminController extends Controller{
     * return ture 拥有权限，false 没有权限*
     */
     private function checkContro(){
-        if(!session('controAction')){
+        if(!session('controAction')){//没有读取用户控制器权限信息
             $role_auth_ca=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ca');
             $role_auth_ca=strtolower($role_auth_ca);
             $role_actions=explode(',',$role_auth_ca);
+            $role_actions[]='index-index';
             session('controAction',$role_actions);
         }
         return in_array(strtolower(CONTROLLER_NAME.'-'.ACTION_NAME),session('controAction'));

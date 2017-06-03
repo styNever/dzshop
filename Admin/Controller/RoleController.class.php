@@ -34,7 +34,8 @@ class RoleController extends AdminController{
                  $this->error('添加角色失败','addRole',1);
             }
         }else{
-            $auth_infos=M('auth')->order('auth_path asc')->select();
+            $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');//权限集合                          
+            $auth_infos=M('auth')->where('auth_id in'." ($auth_ids) ")->order('auth_path asc')->select();
             $this->assign('auth_infos',$auth_infos);
             $this->display();
         }

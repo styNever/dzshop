@@ -29,7 +29,7 @@ function postData() {
 }
 
 function check() {
-    var namePattern = /\W+/;
+    var namePattern = /\W/;
     var username = $('#name').val();
     var passwd = $('#pwd').val();
     $('.check-info').html('');

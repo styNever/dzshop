@@ -45,20 +45,16 @@ body {
     height: 100%;
     background: #eee;
     z-index: 0;
-    position: relative;
-    top: 60px;
-    left: 0px;
-    margin-left: 259px;
+    position: fixed;
+    top: 0px;
+    left: 259px;
 }
 
 
 /*信息内容*/
 
 .content {
-    width: 80%;
-    min-height: 50%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    width: 82%;
 }
 
 

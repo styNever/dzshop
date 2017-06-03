@@ -2,6 +2,7 @@
 return array(
 	//'配置项'=>'配置值'
 	//URL模式
+	'URL_MODEL'=>2,
 	//URL_MODEL=3,
 	//大小写不敏感
 	//'URL_CASE_INSENSITIVE'  =>  true, 

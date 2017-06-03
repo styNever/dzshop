@@ -20,7 +20,8 @@ class AuthModel extends Model{
 
     public function updateAuth($pData,$auth_id){
         $insertData=$this->insertBefore($pData,$auth_id);
-        return $this->save($insertData);
+        $flag=$this->save($insertData);
+        return $this->updateAfter($auth_id,$flag);
     }
 
 
@@ -40,11 +41,12 @@ class AuthModel extends Model{
 * @$flag true 获取全部信息
 * @flag false 获取权限等级小于2的信息
 */
-    public function getAuthInfo($flag=false){        
+    public function getAuthInfo($flag=false){  
+        $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');//权限集合              
         if($flag){//获取全部等级权限
-            $auth_info=$this->order('auth_pid asc')->order('auth_path asc')->select();
+            $auth_info=$this->where('auth_id in'." ($auth_ids) ")->order('auth_path asc')->select();            
         }else{//获取一二级权限
-            $auth_info=$this->where('auth_level<2')->order('auth_pid asc')->order('auth_path asc')->select();
+            $auth_info=$this->where('auth_id in'." ($auth_ids) ")->where('auth_level<2')->order('auth_path asc')->select();
         }
         foreach($auth_info as $key=>$value){
             $auth_info[$key]['auth_name']=str_repeat('-->>',$value['auth_level']).$value['auth_name'];
@@ -54,6 +56,7 @@ class AuthModel extends Model{
 
     /*
     *数据插入之前做处理
+    *对插入的数据做格式化处理，得到权限的pid和权限全路径
     **/
     private function insertBefore($pData,$auth_id){
         if(!$pData['auth_pid']==0){//不是顶级权限
@@ -69,4 +72,21 @@ class AuthModel extends Model{
         return $pData;
     }
 
+    /**
+    *权限更新后更新子权限全路径*
+    **/
+    private function updateAfter($auth_id,$flag=false){
+        if(!$flag){//如果父级更新失败怎么退出
+            return $flag;
+        }
+        $pPath=$this->where('auth_id = '.$auth_id)->getField('auth_path');//得到更新后的权限全路径
+        $childAuths=$this->where('auth_pid = '.$auth_id)->select();
+        foreach($childAuths as $key=>$value){
+            $childAuths[$key]['auth_path']=$pPath.'-'.$value['auth_id'];
+            if(!$this->save($childAuths[$key])){
+                $flag=false;
+            }
+        }
+        return $flag;
+    }
 }
