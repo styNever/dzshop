@@ -9,7 +9,7 @@ class AuthController extends AdminController{
     */
 
     public function showAuth(){
-        $auth_info=D('auth')->getAuthInfo(true);
+        $auth_info=D('auth')->getAuthInfo(true);//获取全部权限信息
         $this->assign('info',$auth_info);
         $this->display();
     }
