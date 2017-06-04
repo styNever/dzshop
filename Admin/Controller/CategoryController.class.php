@@ -63,8 +63,13 @@ class CategoryController extends AdminController{
     *显示商品类别
     **/    
     public function showCategory(){
-        $categorys=M('category')->select();
-        $this->assign('categorys',$categorys);
+        $category=M('category');
+        $total=$category->count();   
+        $pageSize=10;
+        $pageInfo=A('Common/Util')->pageShow($total,$pageSize);        
+        $categorys=$category->limit(($pageInfo['page']-1)*$pageSize,$pageSize)->select();
+        $pageInfo['categorys']=$categorys;
+        $this->assign($pageInfo);
         $this->display();
     }
 }

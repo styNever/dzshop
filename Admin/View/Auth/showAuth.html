@@ -27,5 +27,24 @@
             </tr>
         </foreach>
     </table>
+    <div class="pageContro">
+        <ul>
+            <li><a href="?page=1">首页</a></li>
+            <if condition="($page elt 1)">
+                <li><a href="?page=1">上一页</a></li>
+                <else />
+                <li><a href="?page={$tmpPage=$page-1}">上一页</a></li>
+            </if>
+            <li><a>{$page}/{$totalPage}页</a></li>
+            <li><a>{$pageSize}条/页   共{$total}条数据</a></li>
+            <if condition="($page egt $totalPage)">
+                <li><a href="?page={$totalPage}">下一页</a></li>
+                <else />
+                <li><a href="?page={$tmpPage=$page+1}">下一页</a></li>
+            </if>
+
+            <li><a href="?page={$totalPage}">尾页</a></li>
+        </ul>
+    </div>
 </div>
 <include file="./Admin/View/frame-footer.html " />

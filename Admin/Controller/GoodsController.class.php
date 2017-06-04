@@ -35,9 +35,9 @@ class GoodsController extends AdminController{
             $this->error('非法访问');
             return;
         }
-        $goods=D('goods');
-        $goods->delImg($goodsId);
+        $goods=D('goods'); 
         if($goods->delete($goodsId)){
+            $goods->delImg($goodsId);
             $this->success('删除成功');
         }else{
             $this->error('删除失败');
@@ -90,8 +90,13 @@ class GoodsController extends AdminController{
     }
 
     public function showGoods(){
-        $goodsInfos=M('goods')->select();
-        $this->assign('goodsInfos',$goodsInfos);
+        $goods=M('goods');
+        $total=$goods->count();   
+        $pageSize=8;
+        $pageInfo=A('Common/Util')->pageShow($total,$pageSize);
+        $goodsInfos=$goods->limit(($pageInfo['page']-1)*$pageSize,$pageSize)->select();
+        $pageInfo['goodsInfos']=$goodsInfos;
+        $this->assign($pageInfo);
         $this->display();
     }
 

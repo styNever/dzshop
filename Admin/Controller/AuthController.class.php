@@ -9,8 +9,17 @@ class AuthController extends AdminController{
     */
 
     public function showAuth(){
-        $auth_info=D('auth')->getAuthInfo(true);//获取全部权限信息
-        $this->assign('info',$auth_info);
+        if(session('manager')['role_id']==1){
+            $total=M('auth')->count();
+        }else{
+            $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');//权限集合              
+            $total=$this->where('auth_id in'." ($auth_ids) ")->count();
+        }
+        $pageSize=13;
+        $pageInfo=A('Common/Util')->pageShow($total,$pageSize);     
+        $auth_info=D('auth')->getAuthInfo(true,($pageInfo['page']-1)*$pageSize,$pageSize);//获取全部权限信息
+        $pageInfo['info']=$auth_info;   
+        $this->assign($pageInfo);
         $this->display();
     }
 

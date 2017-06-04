@@ -93,8 +93,13 @@ class RoleController extends AdminController{
     *显示角色列表
     **/       
     public function showRole(){
-        $role_infos=M('role')->select();
-        $this->assign('role_infos',$role_infos);
+        $role=M('role');
+        $total=$role->count();
+        $pageSize=6;
+        $pageInfo=A('Common/Util')->pageShow($total,$pageSize);        
+        $role_infos=$role->limit(($pageInfo['page']-1)*$pageSize,$pageSize)->select();
+        $pageInfo['role_infos']=$role_infos;
+        $this->assign($pageInfo);
         $this->display();
     }
 }

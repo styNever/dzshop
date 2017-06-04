@@ -70,4 +70,27 @@ class UtilController extends Controller{
         }
         $thumb->thumb($width,$heigth)->save($img['savepath'].'thumb'.$img['savename']);
     }    
+
+    /**
+    *分页显示*
+    **/
+
+    public function pageShow($total,$pageSize,$page=1){
+        $totalPage=floor(($total-1)/$pageSize+1);
+        if(!empty($_GET['page'])){
+            $page=$_GET['page'];
+        }
+        if($page<1){
+            $page=1;
+        }
+        if($page>$totalPage){
+            $page=$total;
+        }
+        return array(
+            'page'=>$page,
+            'total'=>$total,
+            'totalPage'=>$totalPage,    
+            'pageSize'=>$pageSize,   
+        );
+    }
 }

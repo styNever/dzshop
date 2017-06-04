@@ -14,3 +14,15 @@
 .select-auth ul {
     margin-top: 18px;
 }
+
+
+/*分页样式*/
+
+.pageContro {
+    padding: 25px;
+    text-align: center;
+}
+
+.pageContro a {
+    padding-left: 10px;
+}

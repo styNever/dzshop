@@ -73,8 +73,13 @@ class ManagerController extends AdminController{
     *显示管理员列表
     **/
     public function showManager(){
-        $m_info=D('manager')->select();
-        $this->assign('info',$m_info);
+        $manager=D('manager');
+        $total=$manager->count();
+        $pageSize=8;
+        $pageInfo=A('Common/Util')->pageShow($total,$pageSize);        
+        $m_info=$manager->limit(($pageInfo['page']-1)*$pageSize,$pageSize)->select();
+        $pageInfo['info']=$m_info;
+        $this->assign($pageInfo);
         $this->display();
     }
 }

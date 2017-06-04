@@ -41,12 +41,20 @@ class AuthModel extends Model{
 * @$flag true 获取全部信息
 * @flag false 获取权限等级小于2的信息
 */
-    public function getAuthInfo($flag=false){  
-        $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');//权限集合              
-        if($flag){//获取全部等级权限
-            $auth_info=$this->where('auth_id in'." ($auth_ids) ")->order('auth_path asc')->select();            
-        }else{//获取一二级权限
-            $auth_info=$this->where('auth_id in'." ($auth_ids) ")->where('auth_level<2')->order('auth_path asc')->select();
+    public function getAuthInfo($flag=false,$start=0,$num=8){  
+        if(session('manager')['role_id']!=1){
+            $auth_ids=M('role')->where('role_id='.session('manager')['role_id'])->getField('role_auth_ids');//权限集合              
+            if($flag){//获取全部等级权限
+                $auth_info=$this->where('auth_id in'." ($auth_ids) ")->order('auth_path asc')->limit($start,$num)->select();                                      
+            }else{//获取一二级权限
+                $auth_info=$this->where('auth_id in'." ($auth_ids) ")->where('auth_level<2')->order('auth_path asc')->select();
+            }
+        }else{
+            if($flag){//获取全部等级权限
+                $auth_info=$this->order('auth_path asc')->limit($start,$num)->select();            
+            }else{//获取一二级权限
+                $auth_info=$this->where('auth_level<2')->order('auth_path asc')->select();
+            }
         }
         foreach($auth_info as $key=>$value){
             $auth_info[$key]['auth_name']=str_repeat('-->>',$value['auth_level']).$value['auth_name'];
