@@ -1,0 +1,108 @@
+.wrap {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.top {
+    height: 80px;
+    line-height: 80px;
+    color: #f96;
+    background: #63c;
+}
+
+.footer {
+    clear: both;
+    height: 150px;
+    margin-top: 25px;
+    margin-bottom: 3px;
+    background: #63c;
+}
+
+
+/*logo图片*/
+
+.logo {
+    padding: 0 20px;
+}
+
+.logo img {
+    margin-bottom: -15px;
+    width: 80px;
+    height: 50px;
+}
+
+
+/*logo图片结束*/
+
+
+/*登陆注册*/
+
+.top ul li {
+    padding: 0 5px;
+}
+
+
+/*轮播图片*/
+
+.sroll-img {
+    height: 350px;
+    overflow: hidden;
+}
+
+.sroll-img img {
+    width: 100%;
+    height: 350px;
+}
+
+.img-control-bar {
+    height: 20px;
+    width: 1024px;
+    line-height: 20px;
+    text-align: center;
+    position: absolute;
+    top: 390px;
+    z-index: 10px;
+}
+
+.img-control-bar i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 12px;
+    margin-right: 15px;
+}
+
+.img-control-bar .img-active {
+    background: #db192a;
+}
+
+.img-control-bar i:hover {
+    background: #db192a;
+}
+
+
+/*分类导航*/
+
+.category-nav {
+    padding: 20px 0px 20px 10px;
+}
+
+.category-nav li {
+    margin-right: 20px;
+}
+
+.category-goods {}
+
+.category-goods dl {
+    display: inline-block;
+    width: 338px;
+    height: 150px;
+    margin: 5px 0px;
+    border: 0.3px solid #ccc;
+}
+
+.category-goods dl img {
+    width: 338px;
+    height: 150px;
+}
