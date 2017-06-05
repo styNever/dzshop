@@ -1,6 +1,9 @@
 $(function() {
     var imgRoll = new imgScroll();
+    $(imgRoll.img[0]).css('z-index', '1'); //初始化图片位置
+    $(imgRoll.i[0]).addClass('img-active'); //初始化图片位置
     imgRoll.IntervalId = imgRoll.setIntervalFn(imgRoll); //设置定时器
+    changeDot(imgRoll);
 });
 
 var imgScroll = function() {};
@@ -15,16 +18,20 @@ imgScroll.prototype.setIntervalFn = function(imgRoll) {
     }, 2000);
 };
 
-function changeDot() { //切换红点
+function changeDot(imgRoll) { //切换红点
     $('.img-control-bar i').click(function() {
-        $('.img-control-bar i').removeClass('img-active');
-        $(this).addClass('img-active');
+        imgRoll.count = $(this).index();
+        imgRoll.changeImg(imgRoll, true);
     });
 }
 
 imgScroll.prototype.changeImg = function(imgRoll, clean) {
     if (imgRoll.count >= imgRoll.size) imgRoll.count = 0;
     imgRoll.img.css('z-index', '0').css('opacity', '0');
+    // imgRoll.i.css('background', '#fff');
+    // $(imgRoll.i[imgRoll.count]).css('background', '#db192a');
+    imgRoll.i.removeClass('img-active');
+    $(imgRoll.i[imgRoll.count]).addClass('img-active');
     $(imgRoll.img[imgRoll.count]).animate({
         opacity: '1',
         'z-index': '0'
