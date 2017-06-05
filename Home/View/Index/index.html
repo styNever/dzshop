@@ -15,7 +15,7 @@
                 <img src="/public/admin/img/logo.jpg" alt="">
             </div>
             <ul>
-                <li class="top-user-info">游客你好请</li>
+                <li class="top-user-info">用户您好请</li>
                 <li class="top-login">登陆</li>
                 <li class="top-reg">注册</li>
             </ul>
@@ -23,88 +23,49 @@
         <div class="content">
             <div class="scroll">
                 <div class="scroll-img">
-                    <a href=""><img src="/public/img/header-nav-bg.jpg" alt=""></a>
-                    <a href=""><img src="/public/img/2.jpg" alt=""></a>
-                    <a href=""><img src="/public/img/3.jpg" alt=""></a>
-                    <a href=""><img src="/public/img/header-nav-bg.jpg" alt=""></a>
-                    <a href=""><img src="/public/img/2.jpg" alt=""></a>
-                    <a href=""><img src="/public/img/3.jpg" alt=""></a>
+                    <foreach name="topGoods" item="topGood">
+                        <a href="{$topGood.goods_big_img}"><img src="{$topGood.goods_big_img}" alt=""></a>
+                    </foreach>
                 </div>
                 <div class="img-control-bar">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
+                    <foreach name="topGoods" item="topGood">
+                        <i></i>
+                    </foreach>
                 </div>
             </div>
-            <div class="category-nav">
-                <ul>
-                    <li>手机</li>
-                    <li>电脑</li>
-                    <li>电视</li>
-                </ul>
-            </div>
-            <div class="category-goods">
-                <dl>
-                    <dd class="goods-intro">
-                        <p class="goods-name">商品名称</p>
-                        <p class="goods-price"><span>$</span>200.00</p>
-                    </dd>
-                    <dd class="goods-img">
-                        <a href=""><img src="/public/img/2.jpg" alt=""></a>
-                    </dd>
-                </dl>
-                <dl>
-                    <dd class="goods-intro">
-                        <p class="goods-name">商品名称</p>
-                        <p class="goods-price"><span>$</span>200.00</p>
-                    </dd>
-                    <dd class="goods-img">
-                        <a href=""><img src="/public/img/2.jpg" alt=""></a>
-                    </dd>
-                </dl>
-                <dl>
-                    <dd class="goods-intro">
-                        <p class="goods-name">商品名称</p>
-                        <p class="goods-price"><span>$</span>200.00</p>
-                    </dd>
-                    <dd class="goods-img">
-                        <a href=""><img src="/public/img/2.jpg" alt=""></a>
-                    </dd>
-                </dl>
-                <dl>
-                    <dd class="goods-intro">
-                        <p class="goods-name">商品名称</p>
-                        <p class="goods-price"><span>$</span>200.00</p>
-                    </dd>
-                    <dd class="goods-img">
-                        <a href=""><img src="/public/img/2.jpg" alt=""></a>
-                    </dd>
-                </dl>
-                <dl>
-                    <dd class="goods-intro">
-                        <p class="goods-name">商品名称</p>
-                        <p class="goods-price"><span>$</span>200.00</p>
-                    </dd>
-                    <dd class="goods-img">
-                        <a href=""><img src="/public/img/2.jpg" alt=""></a>
-                    </dd>
-                </dl>
-                <dl>
-                    <dd class="goods-intro">
-                        <p class="goods-name">商品名称</p>
-                        <p class="goods-price"><span>$</span>200.00</p>
-                    </dd>
-                    <dd class="goods-img">
-                        <a href=""><img src="/public/img/2.jpg" alt=""></a>
-                    </dd>
-                </dl>
-            </div>
+            <foreach name="categorys" item="category">
+                <div class="category-nav">
+                    <ul>
+                        <foreach name="allCategorys" item="allCategory">
+                            <if condition="($allCategory['category_name'] eq $category['category_name'])">
+                                <li style=" color: cornflowerblue; ">{$category.category_name}</li>
+                                <else />
+                                <li>{$allCategory.category_name}</li>
+                            </if>
+                        </foreach>
+                    </ul>
+                </div>
+                <div class="category-goods ">
+                    <foreach name="goodsInfos " item="oneCategory ">
+                        <foreach name="oneCategory " item="goodsInfo ">
+                            <if condition="($category[ 'category_name'] eq $goodsInfo[ 'category_name']) ">
+                                <dl>
+                                    <dd class="goods-intro ">
+                                        <p class="goods-name ">{$goodsInfo.goods_name}</p>
+                                        <p class="goods-price "><span>$</span>{$goodsInfo.goods_price}</p>
+                                    </dd>
+                                    <dd class="goods-img ">
+                                        <a href="{$goodsInfo.goods_small_img} "><img src="{$goodsInfo.goods_small_img} " alt=" "></a>
+                                    </dd>
+                                </dl>
+                            </if>
+                        </foreach>
+                    </foreach>
+                </div>
+            </foreach>
         </div>
         <div class="footer ">
-            <div class="footer-content">
+            <div class="footer-content ">
                 <p>本产品开源免费</p>
                 <p>所有权归原始创作人</p>
                 <p>产品开发完成时间:2017-6-20</p>
@@ -116,8 +77,8 @@
             </div>
         </div>
     </div>
-    <script src="/public/plugins/jquery/jquery.js"></script>
-    <script src="/public/js/index.js"></script>
+    <script src="/public/plugins/jquery/jquery.js "></script>
+    <script src="/public/js/index.js "></script>
 </body>
 
 </html>

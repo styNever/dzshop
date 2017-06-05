@@ -83,7 +83,7 @@ class UtilController extends Controller{
         if($page<1){
             $page=1;
         }
-        if($page>$totalPage){
+        if($page>$totalPage&&$totalPage!=0){
             $page=$total;
         }
         return array(

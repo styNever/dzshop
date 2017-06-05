@@ -45,7 +45,7 @@
 /*轮播图片*/
 
 .scroll-img {
-    height: 350px;
+    height: 450px;
     position: relative;
     top: 0px;
     left: 0px;
@@ -55,7 +55,7 @@
 .scroll-img img {
     position: absolute;
     width: 100%;
-    height: 350px;
+    height: 450px;
     z-index: 0px;
 }
 
@@ -65,7 +65,7 @@
     line-height: 20px;
     text-align: center;
     position: absolute;
-    top: 390px;
+    top: 460px;
     z-index: 2;
 }
 
@@ -106,7 +106,7 @@
 .category-goods dl {
     display: inline-block;
     width: 338px;
-    height: 150px;
+    height: 175px;
     margin: 5px 0px;
     position: relative;
     top: 0px;
@@ -116,12 +116,12 @@
 
 .category-goods dl dd {
     width: 338px;
-    height: 150px;
+    height: 175px;
 }
 
 .category-goods dl .goods-img img {
     width: 338px;
-    height: 150px;
+    height: 175px;
 }
 
 .category-goods dl .goods-img img:hover {
