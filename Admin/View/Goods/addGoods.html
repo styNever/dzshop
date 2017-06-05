@@ -28,6 +28,16 @@
                     </foreach>
                 </select>
             </dd>
+            <dd><label>是否置顶:</label>
+                <select name="goods_top">
+                    <option value="1">是</option>     
+                    <option value="0" selected>否</option>                                                               
+                </select>
+            </dd>
+            <dd>
+                <label for="weight">上架时间:</label>
+                <input id='weight' type="date" name='goods_selltime' placeholder="2017/06/05" />
+            </dd>
             <dd>
                 <label for="shop-img">商品图片:</label>
                 <input id='shop-img' type="file" name='goods_big_img' />

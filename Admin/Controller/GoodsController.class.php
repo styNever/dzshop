@@ -14,6 +14,8 @@ class GoodsController extends AdminController{
     */
     public function addGoods(){
         if(!empty($_POST)){
+            $_POST['category_name']=M('category')->where('category_id='.$_POST['category_id'])->getField('category_name');
+            unset($_POST['category_id']);
             $this->createThumb();
             if(D('goods')->add($_POST)){
                 $this->success('添加成功','showGoods');
