@@ -191,6 +191,8 @@
     width: 50%;
     float: left;
     min-height: 520px;
+    padding-top: 45px;
+    padding-bottom: 20px;
 }
 
 .goods-img img {
@@ -204,11 +206,11 @@
     padding-right: -6px;
     margin-right: -20px;
     min-height: 520px;
-    padding-top: 30px;
+    padding-top: 45px;
+    padding-bottom: 20px;
 }
 
 .goods-info {
-    margin-top: 15px;
     font-size: 14px;
 }
 
