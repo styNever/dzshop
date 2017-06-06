@@ -1,0 +1,15 @@
+<include file="./Home/View/frame-top.html " />
+<div class="detail-content">
+    <div class="goods-img">
+        <img src="{$goodsInfo.goods_big_img}" alt="{$goodsInfo.goods_name}">
+    </div>
+    <div class="goods-info">
+        <p><span>商品名称:</span>{$goodsInfo.goods_name}</p>
+        <p><span>商品价格:</span>{$goodsInfo.goods_price} 元</p>
+        <p><span>商品重量:</span>{$goodsInfo.goods_weight}</p>
+        <p><span>商品数量:</span>{$goodsInfo.goods_num}</p>
+        <p><span>上架时间:</span>{$goodsInfo.goods_selltime}</p>
+        <p><span>商品描述:</span><span class="info-desc">{$goodsInfo.goods_desc}</span></p>
+    </div>
+</div>
+<include file="./Home/View/frame-footer.html " />

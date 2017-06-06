@@ -22,4 +22,14 @@ class IndexController extends Controller {
         $this->assign('goodsInfos',$goodsInfos);
         $this->display();
     }
+
+    public function detail($goodsId=null){
+        if($goodsId){
+            $goodsInfo=M('goods')->find($goodsId);
+            $this->assign('goodsInfo',$goodsInfo);
+            $this->display();
+        }else{
+            $this->redirect('index');;
+        }
+    }
 } 

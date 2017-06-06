@@ -183,3 +183,50 @@
     text-align: center;
     line-height: 24px;
 }
+
+
+/*详情页*/
+
+.goods-img {
+    width: 50%;
+    float: left;
+    min-height: 520px;
+}
+
+.goods-img img {
+    width: 100%;
+}
+
+.goods-info {
+    width: 50%;
+    float: right;
+    padding-left: 20px;
+    padding-right: -6px;
+    margin-right: -20px;
+    min-height: 520px;
+    padding-top: 30px;
+}
+
+.goods-info {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.goods-info p {
+    margin-top: 15px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.goods-info p span {
+    color: #666;
+    font-weight: 500;
+    padding-right: 15px;
+}
+
+.info-desc {
+    display: block;
+    margin-top: 10px;
+    text-indent: 30px;
+    line-height: 30px;
+}

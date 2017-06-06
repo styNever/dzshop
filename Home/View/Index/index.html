@@ -1,84 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>TP电商网站首页</title>
-    <link rel="stylesheet" href="/public/css/main.css" />
-    <link rel="stylesheet" href="/public/css/index.css" />
-</head>
-
-<body>
-    <div class="wrap">
-        <div class="top clearfix">
-            <div class="logo fl">
-                <img src="/public/admin/img/logo.jpg" alt="">
+<include file="./Home/View/frame-top.html " />
+<div class="wrap">
+    <div class="content">
+        <div class="scroll">
+            <div class="scroll-img">
+                <foreach name="topGoods" item="topGood">
+                    <a href="../index/detail.html?goodsId={$topGood.goods_id}"><img src="{$topGood.goods_big_img}" alt=""></a>
+                </foreach>
             </div>
-            <ul>
-                <li class="top-user-info">用户您好请</li>
-                <li class="top-login">登陆</li>
-                <li class="top-reg">注册</li>
-            </ul>
-        </div>
-        <div class="content">
-            <div class="scroll">
-                <div class="scroll-img">
-                    <foreach name="topGoods" item="topGood">
-                        <a href="{$topGood.goods_big_img}"><img src="{$topGood.goods_big_img}" alt=""></a>
-                    </foreach>
-                </div>
-                <div class="img-control-bar">
-                    <foreach name="topGoods" item="topGood">
-                        <i></i>
-                    </foreach>
-                </div>
-            </div>
-            <foreach name="categorys" item="category">
-                <div class="category-nav">
-                    <ul>
-                        <foreach name="allCategorys" item="allCategory">
-                            <if condition="($allCategory['category_name'] eq $category['category_name'])">
-                                <li style=" color: cornflowerblue; ">{$category.category_name}</li>
-                                <else />
-                                <li>{$allCategory.category_name}</li>
-                            </if>
-                        </foreach>
-                    </ul>
-                </div>
-                <div class="category-goods ">
-                    <foreach name="goodsInfos " item="oneCategory ">
-                        <foreach name="oneCategory " item="goodsInfo ">
-                            <if condition="($category[ 'category_name'] eq $goodsInfo[ 'category_name']) ">
-                                <dl>
-                                    <dd class="goods-intro ">
-                                        <p class="goods-name ">{$goodsInfo.goods_name}</p>
-                                        <p class="goods-price "><span>$</span>{$goodsInfo.goods_price}</p>
-                                    </dd>
-                                    <dd class="goods-img ">
-                                        <a href="{$goodsInfo.goods_small_img} "><img src="{$goodsInfo.goods_small_img} " alt=" "></a>
-                                    </dd>
-                                </dl>
-                            </if>
-                        </foreach>
-                    </foreach>
-                </div>
-            </foreach>
-        </div>
-        <div class="footer ">
-            <div class="footer-content ">
-                <p>本产品开源免费</p>
-                <p>所有权归原始创作人</p>
-                <p>产品开发完成时间:2017-6-20</p>
-                <p>开发作者:lxs</p>
-                <p>联系方式:
-                    <span>q1227033198q</span>
-                    <span>tel:xxxxxxxxxxx</span>
-                </p>
+            <div class="img-control-bar">
+                <foreach name="topGoods" item="topGood">
+                    <i></i>
+                </foreach>
             </div>
         </div>
+        <foreach name="categorys" item="category">
+            <div class="category-nav">
+                <ul>
+                    <foreach name="allCategorys" item="allCategory">
+                        <if condition="($allCategory['category_name'] eq $category['category_name'])">
+                            <li style=" color: cornflowerblue; ">{$category.category_name}</li>
+                            <else />
+                            <li>{$allCategory.category_name}</li>
+                        </if>
+                    </foreach>
+                </ul>
+            </div>
+            <div class="category-goods ">
+                <foreach name="goodsInfos " item="oneCategory ">
+                    <foreach name="oneCategory " item="goodsInfo ">
+                        <if condition="($category[ 'category_name'] eq $goodsInfo[ 'category_name']) ">
+                            <dl>
+                                <dd class="goods-intro ">
+                                    <p class="goods-name ">{$goodsInfo.goods_name}</p>
+                                    <p class="goods-price "><span>$</span>{$goodsInfo.goods_price}</p>
+                                </dd>
+                                <dd class="goods-img ">
+                                    <a href="../index/detail.html?goodsId={$goodsInfo.goods_id}"><img src="{$goodsInfo.goods_small_img} " alt=" "></a>
+                                </dd>
+                            </dl>
+                        </if>
+                    </foreach>
+                </foreach>
+            </div>
+        </foreach>
     </div>
-    <script src="/public/plugins/jquery/jquery.js "></script>
-    <script src="/public/js/index.js "></script>
-</body>
-
-</html>
+</div>
+<script src="/public/js/index.js "></script>
+<include file="./Home/View/frame-footer.html " />
