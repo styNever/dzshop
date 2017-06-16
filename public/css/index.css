@@ -111,16 +111,18 @@
     position: relative;
     top: 0px;
     left: 0px;
-    border: 0.3px solid #ccc;
+    margin-right: -1px;
+    border: 1px solid #ddd;
 }
 
 .category-goods dl dd {
     width: 338px;
     height: 175px;
+    text-align: center;
 }
 
 .category-goods dl .goods-img img {
-    width: 338px;
+    width: 220px;
     height: 175px;
 }
 
@@ -187,7 +189,7 @@
 
 /*详情页*/
 
-.goods-img {
+.detail-content .goods-img {
     width: 50%;
     float: left;
     min-height: 520px;
@@ -199,7 +201,11 @@
     width: 100%;
 }
 
-.goods-info {
+.detail-content .goods-img img {
+    width: 100%;
+}
+
+.detail-content .goods-info {
     width: 50%;
     float: right;
     padding-left: 20px;
@@ -210,23 +216,24 @@
     padding-bottom: 20px;
 }
 
-.goods-info {
+.detail-content .goods-info {
     font-size: 14px;
-}
-
-.goods-info p {
     margin-top: 15px;
     font-weight: 700;
     line-height: 24px;
 }
 
-.goods-info p span {
+.detail-content .goods-info p {
+    margin-top: 15px;
+}
+
+.detail-content .goods-info p span {
     color: #666;
     font-weight: 500;
     padding-right: 15px;
 }
 
-.info-desc {
+.detail-content .info-desc {
     display: block;
     margin-top: 10px;
     text-indent: 30px;

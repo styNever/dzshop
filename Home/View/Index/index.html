@@ -4,7 +4,7 @@
         <div class="scroll">
             <div class="scroll-img">
                 <foreach name="topGoods" item="topGood">
-                    <a href="../index/detail.html?goodsId={$topGood.goods_id}"><img src="{$topGood.goods_big_img}" alt=""></a>
+                    <a href="/home/index/detail.html?goodsId={$topGood.goods_id}"><img src="{$topGood.goods_big_img}" alt=""></a>
                 </foreach>
             </div>
             <div class="img-control-bar">
@@ -32,10 +32,10 @@
                             <dl>
                                 <dd class="goods-intro ">
                                     <p class="goods-name ">{$goodsInfo.goods_name}</p>
-                                    <p class="goods-price "><span>$</span>{$goodsInfo.goods_price}</p>
+                                    <p class="goods-price ">{$goodsInfo.goods_price}<span> RMB</span></p>
                                 </dd>
                                 <dd class="goods-img ">
-                                    <a href="../index/detail.html?goodsId={$goodsInfo.goods_id}"><img src="{$goodsInfo.goods_small_img} " alt=" "></a>
+                                    <a href="/home/index/detail.html?goodsId={$goodsInfo.goods_id}"><img src="{$goodsInfo.goods_small_img} " alt=" "></a>
                                 </dd>
                             </dl>
                         </if>
